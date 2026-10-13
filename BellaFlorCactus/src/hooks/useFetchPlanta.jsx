@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import { URL_SPIDERS } from "../utils/api";
+import { URL_PLANTAS } from "../utils/api";
 
-// Custom Hook de lectura de UN SOLO spider, por id. Hermano de
-// useFetchSpiders (plural) — mismo patrón, pero pide un recurso puntual
+// Custom Hook de lectura de UNA SOLA planta, por id. Hermano de
+// useFetchPlantas (plural) — mismo patrón, pero pide un recurso puntual
 // en vez de la colección entera. Pensado para la página de detalle, donde
 // el id sale de la URL con useParams().
-function useFetchSpider(id) {
-  const [spider, setSpider] = useState(null);
+function useFetchPlanta(id) {
+  const [planta, setPlanta] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -14,16 +14,16 @@ function useFetchSpider(id) {
     // Mismo fix que en useFetchPersonajes: nada de setState síncrono antes
     // del primer await, para no disparar el warning de "setState síncrono
     // dentro de un efecto".
-    const cargarSpider = async () => {
+    const cargarPlanta = async () => {
       try {
-        const respuesta = await fetch(`${URL_SPIDERS}/${id}`);
+        const respuesta = await fetch(`${URL_PLANTAS}/${id}`);
 
         if (!respuesta.ok) {
           throw new Error(`Error en la llamada: ${respuesta.status} ${respuesta.statusText}`);
         }
 
         const datos = await respuesta.json();
-        setSpider(datos);
+        setPlanta(datos);
         setError(null);
       } catch (err) {
         setError(err.message || "Ocurrió un error en la API");
@@ -32,10 +32,10 @@ function useFetchSpider(id) {
       }
     };
 
-    cargarSpider();
+    cargarPlanta();
   }, [id]); // si cambia el id de la URL, se vuelve a pedir solo
 
-  return { spider, setSpider, loading, error };
+  return { planta, setPlanta, loading, error };
 }
 
-export default useFetchSpider;
+export default useFetchPlanta;

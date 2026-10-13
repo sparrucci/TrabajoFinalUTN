@@ -16,12 +16,12 @@ function Layout() {
   return (
     // cambio de className dinamica con renderizado condicional
     <main className={`app ${isDark ? "dark" : ""}`}> 
-      <h1>CRUD de Spiders</h1>
+      <h1>Bella Flor CACTUS</h1>
 
       <header className="header-principal" >
         <nav className="nav-principal">
           <Link to="/">Inicio</Link>
-          <Link to="/spiders">Spiders</Link>
+          <Link to="/plantas">Plantas</Link>
         </nav>
 
         <div className="sesion">

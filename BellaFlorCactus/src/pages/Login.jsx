@@ -2,39 +2,26 @@ import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 
-function Registro() {
+function Login() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [name, setName] = useState("")
 
-    const { registrar, error } = useAuth()
+    const { login, error } = useAuth()
     const navigate = useNavigate()
 
     const handleSubmit = async (evento) => {
         evento.preventDefault()
-        const exito = await registrar(name, email, password)
+        const exito = await login(email, password)
         if(exito){
-            navigate("/spiders")
+            navigate("/plantas")
         }
     }
 
   return (
     <section className="tarjeta auth">
-      <h2>Crear cuenta</h2>
+      <h2>Iniciar sesión</h2>
 
       <form className="formulario-auth" onSubmit={handleSubmit}>
-
-        <div className="campo">
-          <label htmlFor="name">Nombre</label>
-          <input
-            type="text"
-            id="name"
-            value={name}
-            onChange={(evento) => setName(evento.target.value)}
-            placeholder="Tu nombre"
-          />
-        </div>
-
         <div className="campo">
           <label htmlFor="email">Email</label>
           <input
@@ -42,7 +29,7 @@ function Registro() {
             id="email"
             value={email}
             onChange={(evento) => setEmail(evento.target.value)}
-            placeholder="demo@utn.edu"
+            placeholder="demo@gmail.com"
           />
         </div>
 
@@ -59,14 +46,14 @@ function Registro() {
 
         {error && <p className="error-mensaje">{error}</p>}
 
-        <button type="submit">Registrarme</button>
+        <button type="submit">Entrar</button>
       </form>
 
       <p className="auth-link">
-        ¿Ya tenés cuenta? <Link to="/login">Iniciá sesión</Link>
+        ¿No tenés cuenta? <Link to="/registro">Registrate</Link>
       </p>
     </section>
   );
 }
 
-export default Registro;
+export default Login;

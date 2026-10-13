@@ -8,11 +8,11 @@ const FORM_VACIO = {
 };
 
 //es tipo ENUM
-const ESTADOS = ["Actuando", "Jugando", "unknown"];
+const ESTADOS = ["Disponible", "No Disponible", "unknown"];
 
 // Este componente tiene la responsabillidad de reunir la información para crear el registro. No es responsable del envío de los datos
-function FormularioSpider({
-  spiderEnEdicion,
+function FormularioPlanta({
+  plantaEnEdicion,
   onCrear,
   onCancelar,
   onActualizar,
@@ -23,16 +23,16 @@ function FormularioSpider({
 
   
 // Fix del warning "setState síncrono dentro de un efecto"
-const [spiderAnterior, setSpiderAnterior] = useState(spiderEnEdicion);
-  if (spiderEnEdicion !== spiderAnterior) {
-    setSpiderAnterior(spiderEnEdicion);
+const [plantaAnterior, setPlantaAnterior] = useState(plantaEnEdicion);
+  if (plantaEnEdicion !== plantaAnterior) {
+    setPlantaAnterior(plantaEnEdicion);
     setForm(
-      spiderEnEdicion
+      plantaEnEdicion
         ? {
-            name: spiderEnEdicion.name,
-            species: spiderEnEdicion.species,
-            status: spiderEnEdicion.status,
-            image: spiderEnEdicion.image || "",
+            name: plantaEnEdicion.name,
+            species: plantaEnEdicion.species,
+            status: plantaEnEdicion.status,
+            image: plantaEnEdicion.image || "",
           }
         : FORM_VACIO,
     );
@@ -55,8 +55,8 @@ const [spiderAnterior, setSpiderAnterior] = useState(spiderEnEdicion);
     // agrego Try catch porque me seguia dando error
     setEnviando(true);
     try{
-      if (spiderEnEdicion) {
-        await onActualizar(spiderEnEdicion.id, form);
+      if (plantaEnEdicion) {
+        await onActualizar(plantaEnEdicion.id, form);
       } else {
         // el await genera una pausa, manda la info y espera rpta
         await onCrear(form);
@@ -74,9 +74,9 @@ const [spiderAnterior, setSpiderAnterior] = useState(spiderEnEdicion);
     <form onSubmit={handleSubmit} className="formulario-personaje">
       <h3>
         {" "}
-        {spiderEnEdicion
-          ? `Editando a ${spiderEnEdicion.name}`
-          : "Creando un Spider"}{" "}
+        {plantaEnEdicion
+          ? `Editando a ${plantaEnEdicion.name}`
+          : "Creando una nueva planta"}{" "}
       </h3>
       <div className="campo">
         <label htmlFor="name">Nombre</label>
@@ -87,7 +87,7 @@ const [spiderAnterior, setSpiderAnterior] = useState(spiderEnEdicion);
           value={form.name}
           // El input modifica al estado a traves de eventos
           onChange={manejarCambios}
-          placeholder="Ej: Spider-Man"
+          placeholder="Ej: Cactus de Navidad"
         />
       </div>
       <div className="campo">
@@ -99,7 +99,7 @@ const [spiderAnterior, setSpiderAnterior] = useState(spiderEnEdicion);
           value={form.species}
           // El input modifica al estado a traves de eventos
           onChange={manejarCambios}
-          placeholder="Ej: Humano-Arácnido"
+          placeholder="Ej: Cactus"
         />
       </div>
 
@@ -151,10 +151,10 @@ const [spiderAnterior, setSpiderAnterior] = useState(spiderEnEdicion);
       <div className="formulario-botones">
         {/* disable permite que si un boton esta en true no pueda ser usado */}
         <button type="submit" disabled={enviando}>
-           {enviando ? "Guardando..." : spiderEnEdicion ? "Guardar cambios": "Crear Spider"}
+           {enviando ? "Guardando..." : plantaEnEdicion ? "Guardar cambios": "Agregar Planta"}
         </button>
 
-        {spiderEnEdicion && (
+        {plantaEnEdicion && (
           <button
             className="botón-secundario"
             onClick={onCancelar}
@@ -168,4 +168,4 @@ const [spiderAnterior, setSpiderAnterior] = useState(spiderEnEdicion);
   );
 }
 
-export default FormularioSpider;
+export default FormularioPlanta;

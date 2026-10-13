@@ -1,19 +1,19 @@
-import React, { useState } from 'react'
-import { URL_SPIDERS } from '../utils/api'
+import { useState } from 'react'
+import { URL_PLANTAS } from '../utils/api'
 
 
-function useCrearSpider() {
+function useCrearPlanta() {
     const [loading, setLoading] = useState(false)
     const [error,setError] = useState(null)
 
-    const crearSpider = async (nuevoSpider)=>{
+    const crearPlanta = async (nuevaPlanta)=>{
         setLoading(true)
         setError(null)
         try {
-            const respuesta = await fetch(URL_SPIDERS, {
+            const respuesta = await fetch(URL_PLANTAS, {
                 method: "POST",
                 headers: {"content-Type": "application/json"},
-                body: JSON.stringify(nuevoSpider),
+                body: JSON.stringify(nuevaPlanta),
             })
             if(!respuesta.ok){
                 throw new Error("No se pudo crear el character: `$(respuesta.status)`");
@@ -29,7 +29,7 @@ function useCrearSpider() {
     }
 
 
-  return { crearSpider, loading, error}
+  return { crearPlanta, loading, error}
 }
 
-export default useCrearSpider
+export default useCrearPlanta

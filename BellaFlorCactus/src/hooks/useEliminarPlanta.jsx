@@ -1,21 +1,21 @@
 import { useState } from "react";
-import { URL_SPIDERS } from "../utils/api";
+import { URL_PLANTAS } from "../utils/api";
 
 // Este delete es HARD delete ya que elimina el dato
 // Diferente al SOFT delete que es un borrado lógico 
 // es decir se agrega un dato mas en un campo de la tabla
 // generalmente  "deletedAt" como timestamp
 
-function useEliminarSpider() {
+function useEliminarPlanta() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const eliminarSpider = async (id) => {
+  const eliminarPlanta = async (id) => {
     setLoading(false);
     setError(null);
 
     try {
-      const respuesta = await fetch(`${URL_SPIDERS}/${id}`, {
+      const respuesta = await fetch(`${URL_PLANTAS}/${id}`, {
         method: "DELETE",
       });
 
@@ -32,7 +32,7 @@ function useEliminarSpider() {
       setLoading(false);
     }
   };
-  return { loading, error, eliminarSpider };
+  return { loading, error, eliminarPlanta };
 }
 
-export default useEliminarSpider;
+export default useEliminarPlanta;

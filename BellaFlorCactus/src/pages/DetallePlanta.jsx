@@ -1,39 +1,39 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import useFetchSpider from "../hooks/useFetchSpider";
-import useActualizarSpider from "../hooks/useActualizarSpider";
-import useEliminarSpider from "../hooks/useEliminarSpider";
-import FormularioSpider from "../components/FormularioSpider";
+import useFetchPlanta from "../hooks/useFetchPlanta";
+import useActualizarPlanta from "../hooks/useActualizarPlanta";
+import useEliminarPlanta from "../hooks/useEliminarPlanta";
+import FormularioPlanta from "../components/FormularioPlanta";
 import { useAuth } from "../context/AuthContext";
 
 
-// Página de detalle — vive en "/Spiders/:id". El :id de la ruta se lee
+// Página de detalle — vive en "/Plantas/:id". El :id de la ruta se lee
 // con useParams() y viaja directo al Custom Hook de fetch singular.
-function DetalleSpider() {
+function DetallePlanta() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { usuario } = useAuth();
 
-  const { spider, setSpider, loading, error } = useFetchSpider(id);
-  const { actualizarSpider } = useActualizarSpider();
-  const { eliminarSpider } = useEliminarSpider();
+  const { planta, setPlanta, loading, error } = useFetchPlanta(id);
+  const { actualizarPlanta } = useActualizarPlanta();
+  const { eliminarPlanta } = useEliminarPlanta();
 
   const [editando, setEditando] = useState(false);
 
-  if (loading) return <p className="cargando">Cargando spider...</p>;
+  if (loading) return <p className="cargando">Cargando planta...</p>;
   if (error) return <p className="error-mensaje">Error: {error}</p>;
 
-  const handleActualizar = async (idSpider, cambios) => {
-    const actualizado = await actualizarSpider(idSpider, cambios);
-    if (actualizado) {
-      setSpider(actualizado); // reflejar el cambio sin volver a pedir todo
+  const handleActualizar = async (idPlanta, cambios) => {
+    const actualizada = await actualizarPlanta(idPlanta, cambios);
+    if (actualizada) {
+      setPlanta(actualizada); // reflejar el cambio sin volver a pedir todo
       setEditando(false);
     }
   };
 
   const handleEliminar = async () => {
-    const seEliminó = await eliminarSpider(spider.id);
-    if (seEliminó) {
+    const seElimino = await eliminarPlanta(planta.id);
+    if (seElimino) {
       navigate("/"); // navegación programática: no hay un <Link> que clickear acá
     }
   };
@@ -45,22 +45,22 @@ function DetalleSpider() {
       </button>
 
       {editando ? (
-        <FormularioSpider
-          spiderEnEdicion={spider}
+        <FormularioPlanta
+          plantaEnEdicion={planta}
           onActualizar={handleActualizar}
           onCancelar={() => setEditando(false)}
         />
       ) : (
         <>
-          {spider.image ? (
-            <img src={spider.image} alt={spider.name} className="detalle-imagen" />
+          {planta.image ? (
+            <img src={planta.image} alt={planta.name} className="detalle-imagen" />
           ) : (
-            <div className="avatar-generico avatar-grande">{spider.name}</div>
+            <div className="avatar-generico avatar-grande">{planta.name}</div>
           )}
 
-          <h2>{spider.name}</h2>
-          <p className={`estado estado-${spider.status.toLowerCase()}`}>
-            {spider.status} · {spider.species}
+          <h2>{planta.name}</h2>
+          <p className={`estado estado-${planta.status.toLowerCase()}`}>
+            {planta.status} · {planta.species}
           </p>
 
           
@@ -79,4 +79,4 @@ function DetalleSpider() {
   );
 }
 
-export default DetalleSpider;
+export default DetallePlanta;

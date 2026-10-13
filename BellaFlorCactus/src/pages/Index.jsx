@@ -7,12 +7,12 @@ function Index() {
     <section className="tarjeta index">
       <h2>Bienvenido</h2>
       <p>
-        Esta app administra personajes de Spider - Man contra una API 
+        Esta app administra characters de Plantas contra una API 
         creada en mockAPI. Desde acá se entra al CRUD
         completo: crear, ver el detalle de cada uno, editar y eliminar.
       </p>
-      <Link to="/spiders" className="boton-link">
-        Ir al CRUD de Spiders →
+      <Link to="/plantas" className="boton-link">
+        Ir a Bella Flor CACTUS →
       </Link>
     </section>
   );

@@ -4,9 +4,9 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './pages/Layout'
 import Index from './pages/Index'
-import Spiders from './pages/Spiders'
+import Plantas from './pages/Plantas'
 import PaginaError from './pages/PaginaError'
-import DetalleSpider from './pages/DetalleSpider'
+import DetallePlanta from './pages/DetallePlanta'
 import { ThemeProvider } from "./context/ThemeContext";
 import { AuthProvider } from "./context/AuthContext";
 import Login from "./pages/Login";
@@ -20,8 +20,8 @@ const mapaRutas = createBrowserRouter([
     children: [
       // primero debo indicar cual ser la pagina inicial
       { index: true, element: <Index/> },
-      { path: "spiders", element: <Spiders/>},
-      { path: "spiders/:id", element: <DetalleSpider/>},
+      { path: "plantas", element: <Plantas/>},
+      { path: "plantas/:id", element: <DetallePlanta/>},
       { path: "login", element: <Login /> },
       { path: "registro", element: <Registro /> },
       { path: "*", element: <PaginaError/>}

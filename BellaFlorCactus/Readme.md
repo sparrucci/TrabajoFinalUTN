@@ -1,16 +1,16 @@
-# Spiders
+# Plantas
 
-Aplicación frontend en React para gestionar personajes de Spider-Man mediante un CRUD completo, con autenticación básica de usuarios, navegación por rutas y cambio de tema claro/oscuro.
+Aplicación frontend en React para gestionar registros de Plantas mediante un CRUD completo, con autenticación básica de usuarios, navegación por rutas y cambio de tema claro/oscuro.
 
 ## 1. Descripción general
 
 Este proyecto es una SPA (Single Page Application) creada con Vite + React. Su objetivo es permitir:
 
-- ver una lista de personajes de Spider-Man
-- crear nuevos personajes de Spider-Man
+- ver una lista de Plantas
+- crear nuevos registros de Plantas
 - editar registros existentes
-- eliminar personajes de Spider-Man
-- ver el detalle de cada personaje de Spider-Man
+- eliminar registros de Plantas
+- ver el detalle de cada Planta
 - iniciar sesión o registrarse
 - cambiar entre tema claro y oscuro
 
@@ -96,28 +96,28 @@ Ejecuta ESLint para revisar la calidad del código.
 ## 6. Estructura del proyecto
 
 ```text
-spiders/
+plantas/
 ├── dist/                  # build compilado
 ├── node_modules/          # dependencias instaladas
 ├── public/                # archivos públicos estáticos
 ├── src/
 │   ├── assets/            # imágenes o recursos gráficos del proyecto
 │   ├── components/        # componentes reutilizables
-│   │   └── FormularioSpider.jsx
+│   │   └── FormularioPlanta.jsx
 │   ├── context/           # Context API para autenticación y tema
 │   │   ├── AuthContext.jsx
 │   │   └── ThemeContext.jsx
 │   ├── hooks/             # custom hooks para API y CRUD
-│   │   ├── useCrearSpider.jsx
-│   │   ├── useFetchSpiders.jsx
-│   │   ├── useFetchSpider.jsx
-│   │   ├── useActualizarSpider.jsx
-│   │   └── useEliminarSpider.jsx
+│   │   ├── useCrearPlanta.jsx
+│   │   ├── useFetchPlantas.jsx
+│   │   ├── useFetchPlanta.jsx
+│   │   ├── useActualizarPlanta.jsx
+│   │   └── useEliminarPlanta.jsx
 │   ├── pages/             # vistas de la aplicación
 │   │   ├── Index.jsx
 │   │   ├── Layout.jsx
-│   │   ├── Spiders.jsx
-│   │   ├── DetalleSpider.jsx
+│   │   ├── Plantas.jsx
+│   │   ├── DetallePlanta.jsx
 │   │   ├── Login.jsx
 │   │   ├── Registro.jsx
 │   │   ├── PaginaError.jsx
@@ -146,8 +146,8 @@ La navegación está configurada con `react-router-dom` en `src/main.jsx`.
 | Ruta | Descripción |
 |------|-------------|
 | `/` | Página de bienvenida / landing |
-| `/spiders` | Listado de spiders y formulario para crear |
-| `/spiders/:id` | Detalle del spider y edición |
+| `/plantas` | Listado de plantas y formulario para crear |
+| `/plantas/:id` | Detalle del planta y edición |
 | `/login` | Inicio de sesión |
 | `/registro` | Registro de usuario |
 | `*` | Página 404 |
@@ -165,19 +165,19 @@ La sesión del usuario se guarda en `localStorage` mediante `AuthContext`.
 Los endpoints usados están definidos en `src/utils/api.js`:
 
 ```js
-export const URL_SPIDERS = "https://6ac6d756bea0e72cf5c94399.mockapi.io/api/v1/characters";
+export const URL_PLANTAS = "https://6ac6d756bea0e72cf5c94399.mockapi.io/api/v1/characters";
 export const URL_USUARIOS = "https://6ac6d756bea0e72cf5c94399.mockapi.io/api/v1/usuarios";
 ```
 
-### CRUD de spiders
+### CRUD de plantas
 
 Los custom hooks en `src/hooks/` encapsulan las operaciones con la API:
 
-- `useFetchSpiders`: trae todos los spiders
-- `useFetchSpider`: trae un spider por id
-- `useCrearSpider`: crea un spider
-- `useActualizarSpider`: actualiza un spider
-- `useEliminarSpider`: elimina un spider
+- `useFetchPlantas`: trae todos los plantas
+- `useFetchPlanta`: trae un planta por id
+- `useCrearPlanta`: crea un planta
+- `useActualizarPlanta`: actualiza un planta
+- `useEliminarPlanta`: elimina un planta
 
 ### Tema oscuro / claro
 
@@ -203,8 +203,8 @@ Es recomendable revisar la API y sus campos antes de hacer cambios en los formul
 
 1. Abrí `src/main.jsx` para ver en qué rutas se renderizan las páginas.
 2. Revisá `src/pages/Layout.jsx` para entender la estructura visual común.
-3. Entrá a `src/pages/Spiders.jsx` para ver el listado y la lógica del CRUD.
-4. Mirá `src/components/FormularioSpider.jsx` para entender cómo se crean y editan registros.
+3. Entrá a `src/pages/Plantas.jsx` para ver el listado y la lógica del CRUD.
+4. Mirá `src/components/FormularioPlanta.jsx` para entender cómo se crean y editan registros.
 5. Revisá `src/context/AuthContext.jsx` para entender la sesión de usuario.
 6. Revisá `src/hooks/` para ver cómo se comunican con la API.
 7. Ajustá estilos en `src/App.css` y `src/index.css`.

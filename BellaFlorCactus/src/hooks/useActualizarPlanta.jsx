@@ -1,16 +1,16 @@
 import { useState } from "react";
-import { URL_SPIDERS } from "../utils/api";
+import { URL_PLANTAS } from "../utils/api";
 
-function useActualizarSpider() {
+function useActualizarPlanta() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const actualizarSpider = async (id, cambios) => {
+  const actualizarPlanta = async (id, cambios) => {
     setLoading(false);
     setError(null);
 
     try {
-      const respuesta = await fetch(`${URL_SPIDERS}/${id}`, {
+      const respuesta = await fetch(`${URL_PLANTAS}/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(cambios),
@@ -29,7 +29,7 @@ function useActualizarSpider() {
     }
   };
 
-  return { loading, error, actualizarSpider };
+  return { loading, error, actualizarPlanta };
 }
 
-export default useActualizarSpider;
+export default useActualizarPlanta;
