@@ -46,7 +46,7 @@ function Login() {
 
         {error && <p className="error-mensaje">{error}</p>}
 
-        <button type="submit">Entrar</button>
+        <button className="boton-login" type="submit">Entrar</button>
       </form>
 
       <p className="auth-link">

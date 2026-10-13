@@ -29,7 +29,7 @@ function Layout() {
         { usuario ? (
           <>
             <span>Hola, {usuario.name}</span>
-              <button type="button" onClick={logout}>
+              <button className="boton-cerrar" type="button" onClick={logout}>
                 Cerrar Sesión
               </button>
           </>

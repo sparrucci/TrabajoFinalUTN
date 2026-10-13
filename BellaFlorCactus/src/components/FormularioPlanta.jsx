@@ -8,7 +8,7 @@ const FORM_VACIO = {
 };
 
 //es tipo ENUM
-const ESTADOS = ["Disponible", "No Disponible", "unknown"];
+const ESTADOS = ["Disponible", "Inexistente", "unknown"];
 
 // Este componente tiene la responsabillidad de reunir la información para crear el registro. No es responsable del envío de los datos
 function FormularioPlanta({

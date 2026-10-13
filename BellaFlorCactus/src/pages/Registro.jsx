@@ -59,7 +59,7 @@ function Registro() {
 
         {error && <p className="error-mensaje">{error}</p>}
 
-        <button type="submit">Registrarme</button>
+        <button className= "boton-login" type="submit">Registrarme</button>
       </form>
 
       <p className="auth-link">
