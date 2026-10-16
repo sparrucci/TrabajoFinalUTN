@@ -3,19 +3,19 @@ import { useAuth } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-    const { login, error } = useAuth()
-    const navigate = useNavigate()
+  const { login, error } = useAuth();
+  const navigate = useNavigate();
 
-    const handleSubmit = async (evento) => {
-        evento.preventDefault()
-        const exito = await login(email, password)
-        if(exito){
-            navigate("/plantas")
-        }
+  const handleSubmit = async (evento) => {
+    evento.preventDefault();
+    const exito = await login(email, password);
+    if (exito) {
+      navigate("/plantas");
     }
+  };
 
   return (
     <section className="tarjeta auth">
@@ -46,7 +46,9 @@ function Login() {
 
         {error && <p className="error-mensaje">{error}</p>}
 
-        <button className="boton-login" type="submit">Entrar</button>
+        <button className="boton-login" type="submit">
+          Entrar
+        </button>
       </form>
 
       <p className="auth-link">

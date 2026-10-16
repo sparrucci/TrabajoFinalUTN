@@ -19,7 +19,9 @@ function useFetchPlanta(id) {
         const respuesta = await fetch(`${URL_PLANTAS}/${id}`);
 
         if (!respuesta.ok) {
-          throw new Error(`Error en la llamada: ${respuesta.status} ${respuesta.statusText}`);
+          throw new Error(
+            `Error en la llamada: ${respuesta.status} ${respuesta.statusText}`,
+          );
         }
 
         const datos = await respuesta.json();

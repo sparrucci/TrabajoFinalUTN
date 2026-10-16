@@ -3,27 +3,26 @@ import { useAuth } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 
 function Registro() {
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [name, setName] = useState("")
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
 
-    const { registrar, error } = useAuth()
-    const navigate = useNavigate()
+  const { registrar, error } = useAuth();
+  const navigate = useNavigate();
 
-    const handleSubmit = async (evento) => {
-        evento.preventDefault()
-        const exito = await registrar(name, email, password)
-        if(exito){
-            navigate("/plantas")
-        }
+  const handleSubmit = async (evento) => {
+    evento.preventDefault();
+    const exito = await registrar(name, email, password);
+    if (exito) {
+      navigate("/plantas");
     }
+  };
 
   return (
     <section className="tarjeta auth">
       <h2>Crear cuenta</h2>
 
       <form className="formulario-auth" onSubmit={handleSubmit}>
-
         <div className="campo">
           <label htmlFor="name">Nombre</label>
           <input
@@ -59,7 +58,9 @@ function Registro() {
 
         {error && <p className="error-mensaje">{error}</p>}
 
-        <button className= "boton-login" type="submit">Registrarme</button>
+        <button className="boton-login" type="submit">
+          Registrarme
+        </button>
       </form>
 
       <p className="auth-link">

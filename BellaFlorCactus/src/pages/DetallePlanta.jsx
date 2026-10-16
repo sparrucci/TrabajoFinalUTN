@@ -6,7 +6,6 @@ import useEliminarPlanta from "../hooks/useEliminarPlanta";
 import FormularioPlanta from "../components/FormularioPlanta";
 import { useAuth } from "../context/AuthContext";
 
-
 // Página de detalle — vive en "/Plantas/:id". El :id de la ruta se lee
 // con useParams() y viaja directo al Custom Hook de fetch singular.
 function DetallePlanta() {
@@ -40,7 +39,11 @@ function DetallePlanta() {
 
   return (
     <section className="tarjeta detalle-personaje">
-      <button type="button" className="boton-volver" onClick={() => navigate(-1)}>
+      <button
+        type="button"
+        className="boton-volver"
+        onClick={() => navigate(-1)}
+      >
         ← Volver
       </button>
 
@@ -53,7 +56,11 @@ function DetallePlanta() {
       ) : (
         <>
           {planta.image ? (
-            <img src={planta.image} alt={planta.name} className="detalle-imagen" />
+            <img
+              src={planta.image}
+              alt={planta.name}
+              className="detalle-imagen"
+            />
           ) : (
             <div className="avatar-generico avatar-grande">{planta.name}</div>
           )}
@@ -63,16 +70,22 @@ function DetallePlanta() {
             {planta.status} · {planta.species}
           </p>
 
-          
           <div className="detalle-acciones">
-            <button type="button" className="boton-editar" onClick={() => setEditando(true)}>
+            <button
+              type="button"
+              className="boton-editar"
+              onClick={() => setEditando(true)}
+            >
               Editar
             </button>
-            <button type="button" className="boton-eliminar" onClick={handleEliminar}>
+            <button
+              type="button"
+              className="boton-eliminar"
+              onClick={handleEliminar}
+            >
               Eliminar
             </button>
           </div>
-          
         </>
       )}
     </section>

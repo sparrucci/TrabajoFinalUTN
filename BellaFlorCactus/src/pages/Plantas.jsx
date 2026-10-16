@@ -54,7 +54,7 @@ function Plantas() {
   return (
     <section className="tarjeta personajes">
       <div className="personajes-header">
-        <h2>Diferentes Plantas, Cactus o Suculentas, de mi propia API creada con mockapi.io</h2>
+        <h2>Cactus y Suculentas de mi propia API</h2>
       </div>
 
       <FormularioPlanta

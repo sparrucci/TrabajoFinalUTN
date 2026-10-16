@@ -21,9 +21,8 @@ function FormularioPlanta({
   const [form, setForm] = useState(FORM_VACIO);
   const [enviando, setEnviando] = useState(false);
 
-  
-// Fix del warning "setState síncrono dentro de un efecto"
-const [plantaAnterior, setPlantaAnterior] = useState(plantaEnEdicion);
+  // Fix del warning "setState síncrono dentro de un efecto"
+  const [plantaAnterior, setPlantaAnterior] = useState(plantaEnEdicion);
   if (plantaEnEdicion !== plantaAnterior) {
     setPlantaAnterior(plantaEnEdicion);
     setForm(
@@ -37,7 +36,6 @@ const [plantaAnterior, setPlantaAnterior] = useState(plantaEnEdicion);
         : FORM_VACIO,
     );
   }
-
 
   //Usa los atributos name y value para saber que parte del objeto form actualizar
   //sin importar cuantos cambios tenga el formulario
@@ -54,7 +52,7 @@ const [plantaAnterior, setPlantaAnterior] = useState(plantaEnEdicion);
 
     // agrego Try catch porque me seguia dando error
     setEnviando(true);
-    try{
+    try {
       if (plantaEnEdicion) {
         await onActualizar(plantaEnEdicion.id, form);
       } else {
@@ -151,7 +149,11 @@ const [plantaAnterior, setPlantaAnterior] = useState(plantaEnEdicion);
       <div className="formulario-botones">
         {/* disable permite que si un boton esta en true no pueda ser usado */}
         <button type="submit" disabled={enviando}>
-           {enviando ? "Guardando..." : plantaEnEdicion ? "Guardar cambios": "Agregar Planta"}
+          {enviando
+            ? "Guardando..."
+            : plantaEnEdicion
+              ? "Guardar cambios"
+              : "Agregar Planta"}
         </button>
 
         {plantaEnEdicion && (

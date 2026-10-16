@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { URL_PLANTAS } from "../utils/api";
 
-
 function useFetchPlantas() {
   // Los datos que me trae la API
   const [plantas, setPlantas] = useState([]);
@@ -10,7 +9,7 @@ function useFetchPlantas() {
   const [loading, setLoading] = useState(true);
   // Error, para enviarlo a la pantalla y que el usr lo pueda ver en tiempo real
   const [error, setError] = useState(null);
-  
+
   // Implementación de Función principal - aca NO se está ejecutando
   const fetchPlantas = async () => {
     // seteamos el loading en true para asegurarnos de que estará en true, es decir que no quedó basura de la ejecución anterior
@@ -21,7 +20,7 @@ function useFetchPlantas() {
     try {
       const respuesta = await fetch(URL_PLANTAS);
       //valido y, si algo salió mal, capturo el error
-      console.log(respuesta)
+      console.log(respuesta);
       if (!respuesta.ok) {
         throw new Error(
           `Error en la llamada: ${respuesta.status} ${respuesta.statusText}`,

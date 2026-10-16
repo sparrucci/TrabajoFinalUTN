@@ -1,5 +1,3 @@
-// template
-
 import { Link, Outlet } from "react-router-dom";
 import "../App.css";
 import { useTheme } from "../context/ThemeContext";
@@ -11,14 +9,15 @@ import { useAuth } from "../context/AuthContext";
 
 // Layout es una estructura que van a tener todos mis componentes
 function Layout() {
-  const { isDark, toggleTheme } = useTheme()
-  const { usuario, logout } = useAuth()
+  const { isDark, toggleTheme } = useTheme();
+  const { usuario, logout } = useAuth();
+
   return (
     // cambio de className dinamica con renderizado condicional
-    <main className={`app ${isDark ? "dark" : ""}`}> 
+    <main className={`app ${isDark ? "dark" : ""}`}>
       <h1>Bella Flor CACTUS</h1>
 
-      <header className="header-principal" >
+      <header className="header-principal">
         <nav className="nav-principal">
           <Link to="/">Inicio</Link>
           <Link to="/plantas">Plantas</Link>
@@ -26,30 +25,43 @@ function Layout() {
 
         <div className="sesion">
           {console.log(usuario)}
-        { usuario ? (
-          <>
-            <span>Hola, {usuario.name}</span>
+          {usuario ? (
+            <>
+              <span>Hola, {usuario.name}</span>
               <button className="boton-cerrar" type="button" onClick={logout}>
                 Cerrar Sesión
               </button>
-          </>
-        ) : (
-          <>
-            <Link to="/login" > Iniciar sesión </Link>
-            <Link to="/registro" > Registrarme </Link>
-          </>
-
-        ) }
+            </>
+          ) : (
+            <>
+              <Link to="/login"> Iniciar sesión </Link>
+              <Link to="/registro"> Registrarme </Link>
+            </>
+          )}
         </div>
 
-        <button type="button" className="boton-tema" onClick={toggleTheme} >
-          { isDark ? "🌞 Claro" : "🌙 Oscuro" }
+        <button type="button" className="boton-tema" onClick={toggleTheme}>
+          {isDark ? "🌞 Claro" : "🌙 Oscuro"}
         </button>
       </header>
-    {/* // Outlet representa toda pagina que va a utilizar este layout */}
+      {/* // Outlet representa toda pagina que va a utilizar este layout */}
       <Outlet />
+      <footer>
+        <ul class="footer-nav">
+          <Link to="/">Inicio</Link>
+          <Link to="/plantas">Plantas</Link>
+        </ul>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="#" aria-label="Facebook">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </div>
+      </footer>
     </main>
   );
 }
 
-export default Layout
+export default Layout;

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { URL_PLANTAS } from "../utils/api";
 
 // Este delete es HARD delete ya que elimina el dato
-// Diferente al SOFT delete que es un borrado lógico 
+// Diferente al SOFT delete que es un borrado lógico
 // es decir se agrega un dato mas en un campo de la tabla
 // generalmente  "deletedAt" como timestamp
 

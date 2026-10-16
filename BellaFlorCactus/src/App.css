@@ -1,24 +1,28 @@
 .app {
   width: 100%;
   max-width: 760px;
+  min-height: calc(100vh - 120px);
   display: flex;
   flex-direction: column;
   gap: 20px;
   padding: 16px;
 }
 
-h1 {bod
+h1 {
   margin: 0;
   font-size: 20px;
   text-align: center;
 }
 
 .header-principal {
+  background-color: #008349;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   gap: 10px;
+  border-radius: 8px;
+  padding: 1rem 0.5rem;
 }
 
 .nav-principal {
@@ -27,7 +31,7 @@ h1 {bod
 }
 
 .nav-principal a {
-  color: #4361ee;
+  color: #f2f3fa;
   text-decoration: none;
   font-size: 13px;
   font-weight: 600;
@@ -43,6 +47,12 @@ h1 {bod
   gap: 10px;
   font-size: 13px;
 }
+
+.sesion a,
+.sesion span {
+  color: #f2f3fa;
+}
+
 
 .sesion button {
   padding: 6px 10px;
@@ -129,22 +139,36 @@ h1 {bod
   color: #555;
   font-size: 14px;
   line-height: 1.5;
-  max-width: 46ch;
+  max-width: 60ch;
   margin: 12px auto 20px;
+}
+
+.contenedor-hero {
+  margin-top: 10px;
+  /* Ajusta los píxeles según el espacio que desees */
+}
+
+/* Aprovechamos para integrar los bordes redondeados y el verde que vimos antes */
+.imagen-redondeada {
+  border-radius: 16px;
+  border: 1.5px solid #008349 !important;
+  max-width: 100%;
+  height: 400px;
+  ;
 }
 
 .boton-link {
   display: inline-block;
   padding: 10px 20px;
   border-radius: 6px;
-  background: #4361ee;
+  background: #008349;
   color: #fff;
   text-decoration: none;
   font-size: 14px;
 }
 
 .boton-link:hover {
-  background: #364fc7;
+  background: #008349;
 }
 
 .tarjeta {
@@ -226,7 +250,7 @@ h2 {
   padding: 9px 16px;
   border: none;
   border-radius: 6px;
-  background: #4361ee;
+  background: #008349;
   color: #fff;
   cursor: pointer;
   font-size: 13px;
@@ -267,7 +291,7 @@ h2 {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: #4361ee;
+  background: #008349;
   color: #fff;
   display: flex;
   align-items: center;
@@ -361,24 +385,39 @@ h2 {
 
 .tarjeta-personaje-acciones {
   display: flex;
-  flex-direction: column; /* Cambia la dirección a columna (uno abajo del otro) */
-  gap: 10px; /* Espacio opcional de separación entre los botones */
+  flex-direction: column;
+  /* Cambia la dirección a columna (uno abajo del otro) */
+  gap: 10px;
+  /* Espacio opcional de separación entre los botones */
 }
 
- 
+
 .estado {
   margin: 0 8px 10px;
   font-size: 11px;
   color: #666666;
 }
 
-.estado-disponible::before { content: "● "; color: #2b8a3e; }
-.estado-inexistente::before { content: "● "; color: #c82213; }
-.estado-unknown::before { content: "● "; color: #c69b18; }
+.estado-disponible::before {
+  content: "● ";
+  color: #2b8a3e;
+}
+
+.estado-inexistente::before {
+  content: "● ";
+  color: #c82213;
+}
+
+.estado-unknown::before {
+  content: "● ";
+  color: #c69b18;
+}
 
 .boton-editar {
-  color: #355cdc !important;
-  border-color: #98c3ed !important;
+  color: #008349 !important;
+  border-color: #a3e3c6 !important;
+  /*color: #355cdc !important;
+  border-color: #98c3ed !important;*/
   border-radius: 6px;
 }
 
@@ -403,6 +442,7 @@ h2 {
   padding: 6px 12px;
   border: none;
   background: transparent;
+  /*color: #008349;*/
   color: #4361ee;
   cursor: pointer;
   font-size: 13px;
@@ -503,6 +543,8 @@ h2 {
 }
 
 .boton-login {
+  background-color: #008349 !important;
+  color: #fff;
   width: 100%;
   padding: 12px;
   border-radius: 8px;
@@ -510,7 +552,9 @@ h2 {
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.2s, transform 0.1s;
+  border: none;
 }
+
 
 .boton-login:hover {
   transform: translateY(-1px);
@@ -550,21 +594,40 @@ h2 {
 }
 
 
-.boton-login {
-  background-color: #4361ee; /* Cambiá este valor por el color que quieras */
-  color: #ffffff;
-  border: none;
-  border-radius: 6px;
-  padding: 9px 16px;
-}
+
 
 .boton-login:hover {
   background-color: #364fc7;
 }
 
-.boton-cerrar{
-  color: #2044b9;
+.boton-cerrar {
+  color: #0c0c0c;
   border: none;
   border-radius: 6px;
   padding: 9px 16px;
+}
+
+/*footer*/
+footer {
+  background-color: #008349;
+  text-align: center;
+  padding: 1rem 0.5rem;
+  margin-top: auto;
+  /* junto con el flex del body empuja el footer hacia abajo */
+  display: flex;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+  font-size: 12px;
+}
+
+.footer-nav a {
+  color: #f8f8f8
 }
